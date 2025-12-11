@@ -7,8 +7,7 @@ A Git integration plugin for [Mui](https://github.com/S-H-GAMELINKS/mui) editor,
 Add to your `.muirc`:
 
 ```ruby
-$LOAD_PATH.unshift("/path/to/mui-git/lib")
-require "mui_git"
+Mui.use "mui-git"
 ```
 
 Or install via RubyGems (when published):

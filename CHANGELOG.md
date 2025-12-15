@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [0.2.0] 2025-12-15
+
 ### Changed
 - Use `<Leader>` prefix for plugin keymaps to avoid conflicts with Mui core keybindings
   - `q` → `<Leader>q` for closing git buffers

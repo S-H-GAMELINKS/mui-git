@@ -10,6 +10,8 @@ module Mui
       def setup
         register_commands
         register_keymaps
+        # Debug: keymaps registered to config
+        File.write("/tmp/mui-git-setup.log", "config.keymaps[:normal].keys: #{Mui.config.keymaps[:normal]&.keys}\n", mode: "a")
       end
 
       private
@@ -52,39 +54,24 @@ module Mui
           true
         end
 
-        # Diff (first key of 'dv')
-        keymap(:normal, "d") do |ctx|
+        # Diff vertical split (<Leader>d)
+        keymap(:normal, "<Leader>d") do |ctx|
           next unless git_buffer?(ctx.buffer)
 
-          ctx.buffer.set_pending("d")
-          true
-        end
-
-        # Diff vertical split (when 'v' pressed after 'd')
-        keymap(:normal, "v") do |ctx|
-          next unless git_buffer?(ctx.buffer)
-          next unless ctx.buffer.pending_key == "d"
-
-          ctx.buffer.clear_pending
           handle_diff_vertical(ctx)
           true
         end
 
-        # Commit (first key of 'cc')
-        keymap(:normal, "c") do |ctx|
+        # Commit (<Leader>c)
+        keymap(:normal, "<Leader>c") do |ctx|
           next unless status_buffer?(ctx.buffer)
 
-          if ctx.buffer.pending_key == "c"
-            ctx.buffer.clear_pending
-            handle_commit(ctx)
-          else
-            ctx.buffer.set_pending("c")
-          end
+          handle_commit(ctx)
           true
         end
 
         # Quit buffer
-        keymap(:normal, "q") do |ctx|
+        keymap(:normal, "<Leader>q") do |ctx|
           next unless git_buffer?(ctx.buffer)
 
           handle_quit(ctx)
@@ -102,7 +89,7 @@ module Mui
 
       def register_log_blame_keymaps
         # Enter key to show commit diff in Log/Blame buffers
-        keymap(:normal, "\r") do |ctx|
+        keymap(:normal, "<Leader>r") do |ctx|
           next unless log_buffer?(ctx.buffer) || blame_buffer?(ctx.buffer)
 
           handle_show_commit(ctx)
@@ -222,7 +209,7 @@ module Mui
       end
 
       def handle_quit(ctx)
-        ctx.editor.window_manager.close_window(ctx.window)
+        ctx.editor.window_manager.close_current_window
       end
 
       def handle_refresh(ctx)

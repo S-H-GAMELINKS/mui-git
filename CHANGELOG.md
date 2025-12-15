@@ -1,6 +1,16 @@
 ## [Unreleased]
 
-## [0.1.0] - 2025-12-11
+### Changed
+- Use `<Leader>` prefix for plugin keymaps to avoid conflicts with Mui core keybindings
+  - `q` → `<Leader>q` for closing git buffers
+  - `dv` → `<Leader>d` for vertical diff split
+  - `cc` → `<Leader>c` for opening commit message buffer
+  - `Enter` → `<Leader>r` for showing commit diff in Log/Blame buffers
+
+### Fixed
+- Fix `handle_quit` to use `close_current_window` method
+
+## [0.1.0] 2025-12-11
 
 ### Added
 - Initial release

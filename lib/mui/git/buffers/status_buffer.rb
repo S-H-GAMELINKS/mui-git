@@ -118,7 +118,7 @@ module Mui
           end
 
           lines << ""
-          lines << "Press: s=stage, u=unstage, -=toggle, dv=diff, cc=commit, q=quit, R=refresh"
+          lines << "Press: s=stage, u=unstage, -=toggle, \\d=diff, \\c=commit, \\q=quit, R=refresh"
 
           lines.join("\n")
         end

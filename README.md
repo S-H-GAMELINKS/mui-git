@@ -42,25 +42,25 @@ gem install mui-git
 | `s` | Stage file under cursor |
 | `u` | Unstage file under cursor |
 | `-` | Toggle stage/unstage |
-| `dv` | Open diff in vertical split |
-| `cc` | Open commit message buffer |
-| `q` | Close buffer |
+| `<Leader>d` | Open diff in vertical split |
+| `<Leader>c` | Open commit message buffer |
+| `<Leader>q` | Close buffer |
 | `R` | Refresh status |
 
 ## Keymaps (Log/Blame Buffer)
 
 | Key | Description |
 |-----|-------------|
-| `Enter` | Show commit diff in vertical split |
-| `q` | Close buffer |
+| `<Leader>r` | Show commit diff in vertical split |
+| `<Leader>q` | Close buffer |
 
-In the log buffer (`:Git log`), pressing `Enter` on a commit line opens the full commit diff with syntax highlighting.
+In the log buffer (`:Git log`), pressing `<Leader>r` on a commit line opens the full commit diff with syntax highlighting.
 
-In the blame buffer (`:Git blame`), pressing `Enter` on any line shows the diff for that line's commit. Uncommitted changes (shown as `00000000`) are skipped.
+In the blame buffer (`:Git blame`), pressing `<Leader>r` on any line shows the diff for that line's commit. Uncommitted changes (shown as `00000000`) are skipped.
 
 ## Commit Message Buffer
 
-When you press `cc` in the status buffer, a commit message editor opens:
+When you press `<Leader>c` in the status buffer, a commit message editor opens:
 
 1. Write your commit message at the top of the buffer
 2. Lines starting with `#` are comments and will be ignored
